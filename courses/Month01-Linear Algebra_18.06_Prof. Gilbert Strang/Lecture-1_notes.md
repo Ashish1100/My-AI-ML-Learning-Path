@@ -336,7 +336,22 @@ c₁v₁ + c₂v₂ + ⋯ + cₙvₙ
 A **linear combination** of the columns of A, with weights given by components of x.
 
 ### Q4: When can we solve Ax = b for all b?
-When the columns of A are **linearly independent** (span the entire space).
+**Equivalent Questions:**
+- Do the columns of A span the entire space?
+- Are the columns linearly independent?
+- Is A invertible (non-singular)?
+
+**Answer:**
+- **YES** — If columns are linearly independent  
+  → They span the entire space  
+  → A is invertible  
+  → Unique solution exists for every 𝒃  
+
+- **NO** — If columns are linearly dependent  
+  → They do NOT span the space  
+  → A is singular  
+  → No solution for some 𝒃
+
 
 ### Q5: What makes a matrix singular?
 When its columns are **linearly dependent** - some column can be written as a combination of others.
@@ -347,6 +362,19 @@ It reveals the **fundamental structure** of linear systems and helps understand:
 - The span of vectors
 - Linear independence
 - Vector spaces (coming in future lectures)
+
+### Q7: When is there no solution for some 𝒃?
+
+**Answer:**
+There is **no solution** when:
+
+- Columns of A lie in the **same plane** (in 3D)
+- All linear combinations stay **inside that plane**
+- Any 𝒃 **outside the plane** cannot be reached
+- Therefore, system becomes **inconsistent**
+
+**Conclusion:**  
+No solution exists for those 𝒃 outside the column space.
 
 ---
 
