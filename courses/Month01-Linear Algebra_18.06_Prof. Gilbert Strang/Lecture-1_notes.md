@@ -60,7 +60,7 @@ aₙ₁x₁ + aₙ₂x₂ + ⋯ + aₙₙxₙ = bₙ
 
 **Solution:** The point(s) where all geometric objects intersect.
 
-### Column Picture â­
+### Column Picture
 
 **Key Concept:** View the system as a **linear combination** of column vectors.
 
@@ -79,9 +79,9 @@ This is the **most fundamental operation** in linear algebra!
 Compact representation: **Ax = b**
 
 Where:
-- **A** = coefficient matrix (m Ã— n)
-- **x** = vector of unknowns (n Ã— 1)
-- **b** = right-hand side vector (m Ã— 1)
+- **A** = coefficient matrix (m × n)
+- **x** = vector of unknowns (n × 1)
+- **b** = right-hand side vector (m × 1)
 
 ---
 
