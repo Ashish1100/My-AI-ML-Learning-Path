@@ -67,7 +67,7 @@ aₙ₁x₁ + aₙ₂x₂ + ⋯ + aₙₙxₙ = bₙ
 **Linear Combination:** Taking vectors and multiplying each by a scalar, then adding them together.
 
 ```
-xâ‚(column 1) + xâ‚‚(column 2) + ... + xâ‚™(column n) = b
+x₁ (column 1) + x₂ (column 2) + ⋯ + xₙ (column n) = b
 ```
 
 This is the **most fundamental operation** in linear algebra!
