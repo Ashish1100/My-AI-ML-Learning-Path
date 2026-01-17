@@ -12,17 +12,17 @@
 
 ## Table of Contents
 - [Course Introduction](#course-introduction)
-- [Fundamental Problem of Linear Algebra](#fundamental-problem-of-linear-algebra)
-- [Three Perspectives on Linear Systems](#three-perspectives-on-linear-systems)
-- [Example 1: 2Ã—2 System - Complete Solution](#example-1-2Ã—2-system---complete-solution)
-- [Example 2: 3Ã—3 System - Complete Solution](#example-2-3Ã—3-system---complete-solution)
-- [Example 3: Alternative Right-Hand Side](#example-3-alternative-right-hand-side)
-- [Linear Combinations - Deep Dive](#linear-combinations---deep-dive)
-- [Matrix-Vector Multiplication - Complete Methods](#matrix-vector-multiplication---complete-methods)
+- [Fundamental Problem](#fundamental-problem-of-linear-algebra)
+- [Three Perspectives](#three-perspectives-on-linear-systems)
+- [Example 1: 2Ã—2 System](#example-1-2Ã—2-system---complete-solution)
+- [Example 2: 3Ã—3 System](#example-2-3Ã—3-system---complete-solution)
+- [Example 3: Alternative RHS](#example-3-alternative-right-hand-side)
+- [Linear Combinations](#linear-combinations---deep-dive)
+- [Matrix-Vector Multiplication](#matrix-vector-multiplication---complete-methods)
 - [Solvability Theory](#solvability-theory)
-- [Geometric Interpretation in n-Dimensions](#geometric-interpretation-in-n-dimensions)
+- [n-Dimensions](#geometric-interpretation-in-n-dimensions)
 - [Practice Problems](#practice-problems)
-- [Key Formulas Reference](#key-formulas-reference)
+- [Formulas Reference](#key-formulas-reference)
 
 ---
 
@@ -33,19 +33,17 @@
 
 **Standard Form:** Given n equations with n unknowns:
 
-$$
-\begin{cases}
-a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n = b_1 \\
-a_{21}x_1 + a_{22}x_2 + \cdots + a_{2n}x_n = b_2 \\
-\vdots \\
-a_{n1}x_1 + a_{n2}x_2 + \cdots + a_{nn}x_n = b_n
-\end{cases}
-$$
+| Equation | Form |
+|----------|------|
+| System | aâ‚â‚xâ‚ + aâ‚â‚‚xâ‚‚ + â‹¯ + aâ‚â‚™xâ‚™ = bâ‚ |
+| | aâ‚‚â‚xâ‚ + aâ‚‚â‚‚xâ‚‚ + â‹¯ + aâ‚‚â‚™xâ‚™ = bâ‚‚ |
+| | â‹® |
+| | aâ‚™â‚xâ‚ + aâ‚™â‚‚xâ‚‚ + â‹¯ + aâ‚™â‚™xâ‚™ = bâ‚™ |
 
 Where:
-- $a_{ij}$ = coefficient in row $i$, column $j$
-- $x_j$ = $j$-th unknown variable
-- $b_i$ = $i$-th right-hand side value
+- aáµ¢â±¼ = coefficient in row i, column j
+- xâ±¼ = j-th unknown variable
+- báµ¢ = i-th right-hand side value
 
 ---
 
@@ -53,42 +51,26 @@ Where:
 
 ### Problem Statement
 
-**Given:** Coefficient matrix $A$ and right-hand side vector $\mathbf{b}$
+**Given:** Coefficient matrix A and right-hand side vector **b**
 
-**Find:** Solution vector $\mathbf{x}$ such that $A\mathbf{x} = \mathbf{b}$
+**Find:** Solution vector **x** such that A**x** = **b**
 
 ### Matrix Equation Form
 
-$$
-A =
-\begin{bmatrix}
-a_{11} & a_{12} & \cdots & a_{1n} \\
-a_{21} & a_{22} & \cdots & a_{2n} \\
-\vdots & \vdots & \ddots & \vdots \\
-a_{n1} & a_{n2} & \cdots & a_{nn}
-\end{bmatrix}
-\quad
-\mathbf{x} =
-\begin{bmatrix}
-x_1 \\
-x_2 \\
-\vdots \\
-x_n
-\end{bmatrix}
-\quad
-\mathbf{b} =
-\begin{bmatrix}
-b_1 \\
-b_2 \\
-\vdots \\
-b_n
-\end{bmatrix}
-$$
+Matrix form: A**x** = **b**
 
-**Matrix Dimensions:**
-- $A$: $n \times n$ (square matrix)
-- $\mathbf{x}$: $n \times 1$ (column vector)
-- $\mathbf{b}$: $n \times 1$ (column vector)
+Where:
+- A is n Ã— n (coefficient matrix)
+- **x** is n Ã— 1 (unknown vector)
+- **b** is n Ã— 1 (right-hand side vector)
+
+**Component Form:**
+```
+A = [aâ‚â‚  aâ‚â‚‚  ...  aâ‚â‚™]     x = [xâ‚]     b = [bâ‚]
+    [aâ‚‚â‚  aâ‚‚â‚‚  ...  aâ‚‚â‚™]         [xâ‚‚]         [bâ‚‚]
+    [...  ...  ...  ...]         [â‹®]          [â‹®]
+    [aâ‚™â‚  aâ‚™â‚‚  ...  aâ‚™â‚™]         [xâ‚™]         [bâ‚™]
+```
 
 ---
 
@@ -100,59 +82,53 @@ $$
 
 **Geometric Objects by Dimension:**
 - **1D:** Point
-- **2D:** Line (equation: $ax + by = c$)
-- **3D:** Plane (equation: $ax + by + cz = d$)
-- **nD:** Hyperplane ($n-1$ dimensional object in $n$-space)
+- **2D:** Line (equation: ax + by = c)
+- **3D:** Plane (equation: ax + by + cz = d)
+- **nD:** Hyperplane (n-1 dimensional object in n-space)
 
 **General Line Equation (2D):**
-
-$$ax + by = c$$
+```
+ax + by = c
+```
 
 **Properties:**
-- If $c = 0$: Line passes through origin
-- If $c \neq 0$: Line does NOT pass through origin
-- Slope-intercept form: $y = -\frac{a}{b}x + \frac{c}{b}$
+- If c = 0: Line passes through origin
+- If c â‰  0: Line does NOT pass through origin
+- Slope-intercept form: y = -(a/b)x + (c/b)
 
 ---
 
-### 2. Column Picture â­ (Linear Combination View)
+### 2. Column Picture â­ (Linear Combination View) - MOST IMPORTANT
 
-**Concept:** Find scalar multipliers for column vectors to produce $\mathbf{b}$
+**Concept:** Find scalar multipliers for column vectors to produce **b**
 
 **Mathematical Form:**
 
-$$
-x_1 \begin{bmatrix} a_{11} \\ a_{21} \\ \vdots \\ a_{n1} \end{bmatrix}
-+
-x_2 \begin{bmatrix} a_{12} \\ a_{22} \\ \vdots \\ a_{n2} \end{bmatrix}
-+ \cdots +
-x_n \begin{bmatrix} a_{1n} \\ a_{2n} \\ \vdots \\ a_{nn} \end{bmatrix}
-=
-\begin{bmatrix} b_1 \\ b_2 \\ \vdots \\ b_n \end{bmatrix}
-$$
+We write:
+```
+xÂ·[aâ‚â‚]   +  yÂ·[aâ‚â‚‚]   +  ...  +  zÂ·[aâ‚â‚™]   =  [bâ‚]
+  [aâ‚‚â‚]        [aâ‚‚â‚‚]              [aâ‚‚â‚™]        [bâ‚‚]
+  [...]        [...]              [...]        [...]
+  [aâ‚™â‚]        [aâ‚™â‚‚]              [aâ‚™â‚™]        [bâ‚™]
+```
 
-**Compact Notation:**
+**Compact Notation:** xÂ·**a**â‚ + yÂ·**a**â‚‚ + â‹¯ + zÂ·**aâ‚™** = **b**
 
-$$x_1\mathbf{a}_1 + x_2\mathbf{a}_2 + \cdots + x_n\mathbf{a}_n = \mathbf{b}$$
-
-where $\mathbf{a}_j$ is the $j$-th column of $A$.
+where **aâ±¼** is the j-th column of A.
 
 ---
 
 ### 3. Matrix Form (Compact Algebraic Representation)
 
-$$A\mathbf{x} = \mathbf{b}$$
+**Equation:** A**x** = **b**
 
-**Augmented Matrix Form:**
-
-$$
-\left[\begin{array}{cccc|c}
-a_{11} & a_{12} & \cdots & a_{1n} & b_1 \\
-a_{21} & a_{22} & \cdots & a_{2n} & b_2 \\
-\vdots & \vdots & \ddots & \vdots & \vdots \\
-a_{n1} & a_{n2} & \cdots & a_{nn} & b_n
-\end{array}\right]
-$$
+**Augmented Matrix:**
+```
+[aâ‚â‚  aâ‚â‚‚  ...  aâ‚â‚™ | bâ‚]
+[aâ‚‚â‚  aâ‚‚â‚‚  ...  aâ‚‚â‚™ | bâ‚‚]
+[...  ...  ...  ... | ...]
+[aâ‚™â‚  aâ‚™â‚‚  ...  aâ‚™â‚™ | bâ‚™]
+```
 
 ---
 
@@ -160,60 +136,53 @@ $$
 
 ### System Definition
 
-$$
-\begin{cases}
-2x - y = 0 \quad \text{(Equation 1)} \\
--x + 2y = 3 \quad \text{(Equation 2)}
-\end{cases}
-$$
+```
+2x - y = 0        (Equation 1)
+-x + 2y = 3       (Equation 2)
+```
 
 ### Solution Method 1: Row Picture (Geometric)
 
-#### Step 1: Plot Equation 1 ($2x - y = 0$)
+#### Step 1: Plot Equation 1 (2x - y = 0)
 
 **Rearrange to slope-intercept form:**
-
-$$y = 2x$$
+```
+y = 2x
+```
 
 **Properties:**
-- Slope: $m = 2$
-- y-intercept: $0$ (passes through origin)
+- Slope: m = 2
+- y-intercept: 0 (passes through origin)
 
 **Find points:**
-- When $x = 0$: $y = 0$ â†’ Point: $(0, 0)$
-- When $x = 1$: $y = 2$ â†’ Point: $(1, 2)$
-- When $x = 2$: $y = 4$ â†’ Point: $(2, 4)$
+- When x = 0: y = 0 â†’ Point: (0, 0)
+- When x = 1: y = 2 â†’ Point: (1, 2) âœ“
+- When x = 2: y = 4 â†’ Point: (2, 4) âœ“
 
-**Verification:**
-- $(0, 0)$: $2(0) - 0 = 0$ âœ“
-- $(1, 2)$: $2(1) - 2 = 0$ âœ“
-
-#### Step 2: Plot Equation 2 ($-x + 2y = 3$)
+#### Step 2: Plot Equation 2 (-x + 2y = 3)
 
 **Rearrange to slope-intercept form:**
-
-$$2y = x + 3 \implies y = \frac{1}{2}x + \frac{3}{2}$$
+```
+2y = x + 3
+y = (1/2)x + 3/2
+```
 
 **Properties:**
-- Slope: $m = \frac{1}{2}$
-- y-intercept: $\frac{3}{2} = 1.5$
+- Slope: m = 1/2
+- y-intercept: 3/2 = 1.5
 
 **Find points:**
-- When $x = 0$: $y = \frac{3}{2}$ â†’ Point: $(0, 1.5)$
-- When $x = -3$: $y = 0$ â†’ Point: $(-3, 0)$
-- When $x = 1$: $y = 2$ â†’ Point: $(1, 2)$
-
-**Verification:**
-- $(-3, 0)$: $-(-3) + 2(0) = 3$ âœ“
-- $(1, 2)$: $-(1) + 2(2) = 3$ âœ“
+- When x = 0: y = 1.5 â†’ Point: (0, 1.5)
+- When x = -3: y = 0 â†’ Point: (-3, 0)
+- When x = 1: y = 2 â†’ Point: (1, 2) âœ“
 
 #### Step 3: Find Intersection
 
-**Solution:** $(x, y) = (1, 2)$
+**Solution:** (x, y) = (1, 2)
 
 **Verify in both equations:**
-- Eq 1: $2(1) - 2 = 0$ âœ“
-- Eq 2: $-(1) + 2(2) = 3$ âœ“
+- Eq 1: 2(1) - 2 = 0 âœ“
+- Eq 2: -(1) + 2(2) = 3 âœ“
 
 ---
 
@@ -221,90 +190,71 @@ $$2y = x + 3 \implies y = \frac{1}{2}x + \frac{3}{2}$$
 
 #### Step 1: Write as Linear Combination
 
-$$
-x \begin{bmatrix} 2 \\ -1 \end{bmatrix}
-+
-y \begin{bmatrix} -1 \\ 2 \end{bmatrix}
-=
-\begin{bmatrix} 0 \\ 3 \end{bmatrix}
-$$
+```
+xÂ·[2]  + yÂ·[-1]  = [0]
+  [-1]     [2]     [3]
+```
 
 **Notation:**
-- Column 1: $\mathbf{c}_1 = \begin{bmatrix} 2 \\ -1 \end{bmatrix}$
-- Column 2: $\mathbf{c}_2 = \begin{bmatrix} -1 \\ 2 \end{bmatrix}$
-- Right-hand side: $\mathbf{b} = \begin{bmatrix} 0 \\ 3 \end{bmatrix}$
+- Column 1: **c**â‚ = [2, -1]áµ€
+- Column 2: **c**â‚‚ = [-1, 2]áµ€
+- Right-hand side: **b** = [0, 3]áµ€
 
-#### Step 2: Try Solution $x = 1, y = 2$
+#### Step 2: Try Solution x = 1, y = 2
 
-$$
-1 \cdot \begin{bmatrix} 2 \\ -1 \end{bmatrix}
-+
-2 \cdot \begin{bmatrix} -1 \\ 2 \end{bmatrix}
-$$
+**Calculate:**
+```
+1 Ã— [2]   +  2 Ã— [-1]   =  [2]   +  [-2]   =  [0]  âœ“
+    [-1]         [2]        [-1]      [4]       [3]  âœ“
+```
 
-**Calculate component-wise:**
-
-**First component:**
-
-$$1 \cdot 2 + 2 \cdot (-1) = 2 - 2 = 0 \quad \checkmark$$
-
-**Second component:**
-
-$$1 \cdot (-1) + 2 \cdot 2 = -1 + 4 = 3 \quad \checkmark$$
-
-**Result:**
-
-$$
-\begin{bmatrix} 2 \\ -1 \end{bmatrix}
-+
-\begin{bmatrix} -2 \\ 4 \end{bmatrix}
-=
-\begin{bmatrix} 0 \\ 3 \end{bmatrix} \quad \checkmark
-$$
+**Component check:**
+- First component: 1(2) + 2(-1) = 2 - 2 = 0 âœ“
+- Second component: 1(-1) + 2(2) = -1 + 4 = 3 âœ“
 
 ---
 
 ### Solution Method 3: Matrix Form
 
-$$
-\begin{bmatrix} 2 & -1 \\ -1 & 2 \end{bmatrix}
-\begin{bmatrix} x \\ y \end{bmatrix}
-=
-\begin{bmatrix} 0 \\ 3 \end{bmatrix}
-$$
+**Matrix equation:**
+```
+[2   -1] [x]   [0]
+[-1   2] [y] = [3]
+```
 
 #### Algebraic Solution
 
-**From Equation 1:** $y = 2x$
+From Equation 1: y = 2x
 
-**Substitute into Equation 2:**
+Substitute into Equation 2:
+```
+-x + 2(2x) = 3
+-x + 4x = 3
+3x = 3
+x = 1
+```
 
-$$-x + 2(2x) = 3$$
-$$-x + 4x = 3$$
-$$3x = 3 \implies x = 1$$
+Back-substitute:
+```
+y = 2(1) = 2
+```
 
-**Back-substitute:**
-
-$$y = 2(1) = 2$$
-
-**Solution:** $\mathbf{x} = \begin{bmatrix} 1 \\ 2 \end{bmatrix}$
+**Solution:** **x** = [1, 2]áµ€
 
 ---
 
 ### All Possible Right-Hand Sides
 
-**Question:** Can we solve for ANY $\mathbf{b} = \begin{bmatrix} b_1 \\ b_2 \end{bmatrix}$?
+**Question:** Can we solve for ANY **b** = [bâ‚, bâ‚‚]áµ€?
 
-**Answer:** YES! The columns are **linearly independent**.
+**Answer:** YES! The columns are linearly independent.
 
 **Span:** All linear combinations fill the entire 2D plane.
 
-$$\text{span}\left\{ \begin{bmatrix} 2 \\ -1 \end{bmatrix}, \begin{bmatrix} -1 \\ 2 \end{bmatrix} \right\} = \mathbb{R}^2$$
-
 **Matrix Properties:**
-- **Non-singular** (invertible)
-- **Full rank** (rank = 2)
-- **Determinant:** $\det(A) = 2(2) - (-1)(-1) = 4 - 1 = 3 \neq 0$
+- Non-singular (invertible)
+- Full rank (rank = 2)
+- Determinant: det(A) = 2(2) - (-1)(-1) = 4 - 1 = 3 â‰  0 âœ“
 
 ---
 
@@ -312,56 +262,27 @@ $$\text{span}\left\{ \begin{bmatrix} 2 \\ -1 \end{bmatrix}, \begin{bmatrix} -1 \
 
 ### System Definition
 
-$$
-\begin{cases}
-2x - y + 0z = 0 \quad \text{(Equation 1)} \\
--x + 2y - z = -1 \quad \text{(Equation 2)} \\
-0x - 3y + 4z = 4 \quad \text{(Equation 3)}
-\end{cases}
-$$
-
----
+```
+2x - y + 0z = 0       (Equation 1)
+-x + 2y - z = -1      (Equation 2)
+0x - 3y + 4z = 4      (Equation 3)
+```
 
 ### Solution Method 1: Row Picture (3D Planes)
 
-#### Equation 1: $2x - y = 0$
+**Equation 1: 2x - y = 0**
+- z can be any value (vertical plane)
+- Points: (0,0,0), (1,2,0), (1,2,5) âœ“
 
-**Properties:**
-- $z$ can be ANY value (no $z$ term)
-- Forms a **vertical plane** parallel to z-axis
-- In xy-plane: Line $y = 2x$
+**Equation 2: -x + 2y - z = -1**
+- General plane (all variables)
+- Points: (1,0,0), (0,0,1), (1,1,2) âœ“
 
-**Points on plane:**
-- $(0, 0, 0)$ âœ“
-- $(1, 2, 0)$ âœ“
-- $(1, 2, 5)$ âœ“ (any $z$)
+**Equation 3: -3y + 4z = 4**
+- x can be any value (vertical plane)
+- Points: (any,0,1), (any,4,4) âœ“
 
-#### Equation 2: $-x + 2y - z = -1$
-
-**Properties:**
-- General plane (all variables present)
-- Does NOT pass through origin
-
-**Points on plane:**
-- When $x = 1, y = 0, z = 0$: $-1 + 0 - 0 = -1$ âœ“
-- When $x = 0, y = 0, z = 1$: $0 + 0 - 1 = -1$ âœ“
-- When $x = 1, y = 1, z = 2$: $-1 + 2 - 2 = -1$ âœ“
-
-#### Equation 3: $-3y + 4z = 4$
-
-**Properties:**
-- No $x$ term â†’ $x$ can be any value
-- Vertical plane parallel to x-axis
-
-**Rearrange:** $z = \frac{3y + 4}{4}$
-
-**Points on plane:**
-- When $y = 0, z = 1$, any $x$: $-3(0) + 4(1) = 4$ âœ“
-- When $y = 4, z = 4$, any $x$: $-3(4) + 4(4) = 4$ âœ“
-
-#### Intersection
-
-Three planes meet at **one point**: $(x, y, z) = (0, 0, 1)$
+**Intersection:** Three planes meet at (x, y, z) = (0, 0, 1)
 
 ---
 
@@ -369,90 +290,40 @@ Three planes meet at **one point**: $(x, y, z) = (0, 0, 1)$
 
 #### Step 1: Express as Linear Combination
 
-$$
-x \begin{bmatrix} 2 \\ -1 \\ 0 \end{bmatrix}
-+
-y \begin{bmatrix} -1 \\ 2 \\ -3 \end{bmatrix}
-+
-z \begin{bmatrix} 0 \\ -1 \\ 4 \end{bmatrix}
-=
-\begin{bmatrix} 0 \\ -1 \\ 4 \end{bmatrix}
-$$
+```
+xÂ·[2]   + yÂ·[-1]  + zÂ·[0]   = [0]
+  [-1]     [2]       [-1]     [-1]
+  [0]      [-3]      [4]      [4]
+```
 
 **Notation:**
-- $\mathbf{c}_1 = \begin{bmatrix} 2 \\ -1 \\ 0 \end{bmatrix}$ (Column 1)
-- $\mathbf{c}_2 = \begin{bmatrix} -1 \\ 2 \\ -3 \end{bmatrix}$ (Column 2)
-- $\mathbf{c}_3 = \begin{bmatrix} 0 \\ -1 \\ 4 \end{bmatrix}$ (Column 3)
-- $\mathbf{b} = \begin{bmatrix} 0 \\ -1 \\ 4 \end{bmatrix}$ (Right-hand side)
+- **c**â‚ = [2, -1, 0]áµ€ (Column 1)
+- **c**â‚‚ = [-1, 2, -3]áµ€ (Column 2)
+- **c**â‚ƒ = [0, -1, 4]áµ€ (Column 3)
+- **b** = [0, -1, 4]áµ€ (Right-hand side)
 
-#### Step 2: Observation
+#### Step 2: KEY OBSERVATION
 
-**KEY INSIGHT:** $\mathbf{b} = \mathbf{c}_3$ (Right-hand side equals Column 3!)
+**The right-hand side equals Column 3!**
 
-Therefore: $x = 0, y = 0, z = 1$
+**b** = **c**â‚ƒ
+
+Therefore: x = 0, y = 0, z = 1
 
 #### Step 3: Verify Solution
 
-$$
-0 \cdot \begin{bmatrix} 2 \\ -1 \\ 0 \end{bmatrix}
-+
-0 \cdot \begin{bmatrix} -1 \\ 2 \\ -3 \end{bmatrix}
-+
-1 \cdot \begin{bmatrix} 0 \\ -1 \\ 4 \end{bmatrix}
-=
-\begin{bmatrix} 0 \\ -1 \\ 4 \end{bmatrix} \quad \checkmark
-$$
+```
+0Â·[2]   + 0Â·[-1]  + 1Â·[0]   = [0]  âœ“
+  [-1]     [2]       [-1]     [-1]
+  [0]      [-3]      [4]      [4]
+```
 
-#### Step 4: Verify in Original Equations
+Verify in original equations:
+- Equation 1: 2(0) - 0 + 0(1) = 0 âœ“
+- Equation 2: -(0) + 2(0) - 1 = -1 âœ“
+- Equation 3: 0(0) - 3(0) + 4(1) = 4 âœ“
 
-**Equation 1:** $2(0) - 0 + 0(1) = 0$ âœ“
-
-**Equation 2:** $-(0) + 2(0) - 1 = -1$ âœ“
-
-**Equation 3:** $0(0) - 3(0) + 4(1) = 4$ âœ“
-
-**Solution:** $\mathbf{x} = \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}$
-
----
-
-### Solution Method 3: Matrix Form
-
-$$
-\begin{bmatrix}
-2 & -1 & 0 \\
--1 & 2 & -1 \\
-0 & -3 & 4
-\end{bmatrix}
-\begin{bmatrix} x \\ y \\ z \end{bmatrix}
-=
-\begin{bmatrix} 0 \\ -1 \\ 4 \end{bmatrix}
-$$
-
-#### Matrix Multiplication Check
-
-$$
-\begin{bmatrix}
-2x - y + 0z \\
--x + 2y - z \\
-0x - 3y + 4z
-\end{bmatrix}
-=
-\begin{bmatrix} 0 \\ -1 \\ 4 \end{bmatrix}
-$$
-
-**With $x = 0, y = 0, z = 1$:**
-
-$$
-\begin{bmatrix}
-2(0) - 0 + 0(1) \\
--(0) + 2(0) - 1 \\
-0(0) - 3(0) + 4(1)
-\end{bmatrix}
-=
-\begin{bmatrix} 0 \\ -1 \\ 4 \end{bmatrix} \quad \checkmark
-$$
-
-**Solution:** $\mathbf{x} = \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}$
+**Solution:** **x** = [0, 0, 1]áµ€
 
 ---
 
@@ -460,71 +331,49 @@ $$
 
 ### Modified System
 
-**Same matrix $A$, different $\mathbf{b}$:**
+Same matrix A, different **b**:
 
-$$
-\begin{bmatrix}
-2 & -1 & 0 \\
--1 & 2 & -1 \\
-0 & -3 & 4
-\end{bmatrix}
-\begin{bmatrix} x \\ y \\ z \end{bmatrix}
-=
-\begin{bmatrix} 1 \\ 1 \\ -3 \end{bmatrix}
-$$
-
----
+```
+[2   -1   0] [x]   [1]
+[-1   2  -1] [y] = [1]
+[0   -3   4] [z]   [-3]
+```
 
 ### Column Picture Analysis
 
-#### Step 1: Observe New $\mathbf{b}$
+#### Step 1: Observe New b
 
-$$\mathbf{b}_{\text{new}} = \begin{bmatrix} 1 \\ 1 \\ -3 \end{bmatrix}$$
+**b**_new = [1, 1, -3]áµ€
 
-**Check if it's a combination of columns:**
+Check if it's a combination of columns:
+```
+[2]    [-1]    [2-1]    [1]
+[-1] + [2]  =  [-1+2] = [1]  âœ“
+[0]    [-3]    [0-3]    [-3]
+```
 
-$$
-\mathbf{c}_1 + \mathbf{c}_2 = \begin{bmatrix} 2 \\ -1 \\ 0 \end{bmatrix}
-+
-\begin{bmatrix} -1 \\ 2 \\ -3 \end{bmatrix}
-=
-\begin{bmatrix} 1 \\ 1 \\ -3 \end{bmatrix}
-$$
-
-**Perfect match!** $\mathbf{b}_{\text{new}} = \mathbf{c}_1 + \mathbf{c}_2$
+**Perfect match!** **b**_new = **c**â‚ + **c**â‚‚
 
 #### Step 2: Solution
 
-$$x\mathbf{c}_1 + y\mathbf{c}_2 + z\mathbf{c}_3 = \mathbf{c}_1 + \mathbf{c}_2$$
+xÂ·**c**â‚ + yÂ·**c**â‚‚ + zÂ·**c**â‚ƒ = **c**â‚ + **c**â‚‚
 
-**Therefore:** $x = 1, y = 1, z = 0$
+**Therefore:** x = 1, y = 1, z = 0
 
 #### Step 3: Verify
 
-$$
-1 \cdot \begin{bmatrix} 2 \\ -1 \\ 0 \end{bmatrix}
-+
-1 \cdot \begin{bmatrix} -1 \\ 2 \\ -3 \end{bmatrix}
-+
-0 \cdot \begin{bmatrix} 0 \\ -1 \\ 4 \end{bmatrix}
-$$
+```
+1Â·[2]    + 1Â·[-1]   + 0Â·[0]    = [1]  âœ“
+  [-1]      [2]         [-1]     [1]
+  [0]       [-3]        [4]      [-3]
+```
 
-**Component-wise:**
-- First: $2 + (-1) + 0 = 1$ âœ“
-- Second: $-1 + 2 + 0 = 1$ âœ“
-- Third: $0 + (-3) + 0 = -3$ âœ“
+Verify in original system:
+- Equation 1: 2(1) - 1 + 0 = 1 âœ“
+- Equation 2: -(1) + 2(1) - 0 = 1 âœ“
+- Equation 3: 0(1) - 3(1) + 4(0) = -3 âœ“
 
-$$= \begin{bmatrix} 1 \\ 1 \\ -3 \end{bmatrix} \quad \checkmark$$
-
-#### Step 4: Verify in Original System
-
-**Equation 1:** $2(1) - 1 + 0(0) = 1$ âœ“
-
-**Equation 2:** $-(1) + 2(1) - 0 = 1$ âœ“
-
-**Equation 3:** $0(1) - 3(1) + 4(0) = -3$ âœ“
-
-**Solution:** $\mathbf{x} = \begin{bmatrix} 1 \\ 1 \\ 0 \end{bmatrix}$
+**Solution:** **x** = [1, 1, 0]áµ€
 
 ---
 
@@ -532,13 +381,15 @@ $$= \begin{bmatrix} 1 \\ 1 \\ -3 \end{bmatrix} \quad \checkmark$$
 
 ### Definition
 
-Given vectors $\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_n$ and scalars $c_1, c_2, \ldots, c_n$:
+Given vectors **v**â‚, **v**â‚‚, ..., **vâ‚™** and scalars câ‚, câ‚‚, ..., câ‚™:
 
-$$\text{Linear Combination} = c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + \cdots + c_n\mathbf{v}_n$$
+```
+Linear Combination = câ‚Â·vâ‚ + câ‚‚Â·vâ‚‚ + â‹¯ + câ‚™Â·vâ‚™
+```
 
 **Properties:**
 - Result is a vector in the same space
-- $c_i$ can be any real number (positive, negative, zero)
+- cáµ¢ can be any real number (positive, negative, zero)
 - Order doesn't matter (commutative)
 
 ---
@@ -547,83 +398,73 @@ $$\text{Linear Combination} = c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + \cdots + c_n\m
 
 #### Example A: 2D Vectors
 
-$$\mathbf{v}_1 = \begin{bmatrix} 1 \\ 2 \end{bmatrix}, \quad \mathbf{v}_2 = \begin{bmatrix} 3 \\ 1 \end{bmatrix}$$
+```
+vâ‚ = [1]    vâ‚‚ = [3]
+     [2]         [1]
+```
 
-**Linear combination:** $2\mathbf{v}_1 + 3\mathbf{v}_2$
+**Linear combination: 2vâ‚ + 3vâ‚‚**
 
-$$
-2\begin{bmatrix} 1 \\ 2 \end{bmatrix}
-+
-3\begin{bmatrix} 3 \\ 1 \end{bmatrix}
-=
-\begin{bmatrix} 2 \\ 4 \end{bmatrix}
-+
-\begin{bmatrix} 9 \\ 3 \end{bmatrix}
-=
-\begin{bmatrix} 11 \\ 7 \end{bmatrix}
-$$
+```
+2Â·[1]  + 3Â·[3]  = [2]  + [9]  = [11]
+  [2]      [1]    [4]    [3]    [7]
+```
 
-#### Example B: 3D Vectors
+#### Example B: 3D Vectors (Standard Basis)
 
-$$\mathbf{u}_1 = \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}, \quad \mathbf{u}_2 = \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}, \quad \mathbf{u}_3 = \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}$$
+```
+uâ‚ = [1]    uâ‚‚ = [0]    uâ‚ƒ = [0]
+     [0]         [1]         [0]
+     [0]         [0]         [1]
+```
 
-**Linear combination:** $5\mathbf{u}_1 - 2\mathbf{u}_2 + 3\mathbf{u}_3$
+**Linear combination: 5uâ‚ - 2uâ‚‚ + 3uâ‚ƒ**
 
-$$
-5\begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}
--
-2\begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}
-+
-3\begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}
-=
-\begin{bmatrix} 5 \\ -2 \\ 3 \end{bmatrix}
-$$
+```
+5Â·[1]  - 2Â·[0]  + 3Â·[0]  = [5]
+  [0]       [1]       [0]    [-2]
+  [0]       [0]       [1]    [3]
+```
 
-**Note:** These are **standard basis vectors** ($\mathbf{e}_1, \mathbf{e}_2, \mathbf{e}_3$)
+These are standard basis vectors (eâ‚, eâ‚‚, eâ‚ƒ)
 
 ---
 
 ### Span - All Possible Combinations
 
-**Definition:** The **span** of vectors $\{\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_n\}$ is the set of ALL possible linear combinations:
-
-$$\text{span}\{\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_n\} = \{c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + \cdots + c_n\mathbf{v}_n \mid c_i \in \mathbb{R}\}$$
+**Definition:** The span of vectors {**v**â‚, **v**â‚‚, ..., **vâ‚™**} is the set of ALL possible linear combinations.
 
 #### Cases in 2D
 
-**Case 1:** Two independent vectors
+**Case 1: Two independent vectors**
+```
+vâ‚ = [1]    vâ‚‚ = [0]
+     [0]         [1]
+```
+Span: All of â„Â² (entire plane)
 
-$$\mathbf{v}_1 = \begin{bmatrix} 1 \\ 0 \end{bmatrix}, \quad \mathbf{v}_2 = \begin{bmatrix} 0 \\ 1 \end{bmatrix}$$
+**Case 2: Two dependent vectors (one is multiple of other)**
+```
+vâ‚ = [1]    vâ‚‚ = [2]  = 2Â·vâ‚
+     [2]         [4]
+```
+Span: A line through origin (1D subspace)
 
-- Span: All of $\mathbb{R}^2$ (entire plane)
-
-**Case 2:** Two dependent vectors (one is multiple of other)
-
-$$\mathbf{v}_1 = \begin{bmatrix} 1 \\ 2 \end{bmatrix}, \quad \mathbf{v}_2 = \begin{bmatrix} 2 \\ 4 \end{bmatrix} = 2\mathbf{v}_1$$
-
-- Span: A line through origin (1D subspace)
-
-**Case 3:** Single vector
-
-$$\mathbf{v}_1 = \begin{bmatrix} 3 \\ 1 \end{bmatrix}$$
-
-- Span: Line in direction of $\mathbf{v}_1$
+**Case 3: Single vector**
+```
+vâ‚ = [3]
+     [1]
+```
+Span: Line in direction of vâ‚
 
 ---
 
 #### Cases in 3D
 
-**Case 1:** Three independent vectors
-- Span: All of $\mathbb{R}^3$ (entire 3D space)
-
-**Case 2:** Two independent vectors (third is combination)
-- Span: A plane through origin (2D subspace)
-
-**Case 3:** One vector (others are multiples)
-- Span: A line through origin (1D subspace)
-
-**Case 4:** Zero vector only
-- Span: Just the origin $\{\mathbf{0}\}$
+- **Case 1:** Three independent vectors â†’ Span all of â„Â³
+- **Case 2:** Two independent vectors â†’ Span a plane through origin
+- **Case 3:** One vector â†’ Span a line through origin
+- **Case 4:** Zero vector only â†’ Span just the origin {0}
 
 ---
 
@@ -631,136 +472,85 @@ $$\mathbf{v}_1 = \begin{bmatrix} 3 \\ 1 \end{bmatrix}$$
 
 ### Method 1: Linear Combination of Columns â­
 
-**Formula:**
+**Key Insight:** A**x** = weighted sum of columns of A
 
-$$A\mathbf{x} = \begin{bmatrix} | & | & & | \\ \mathbf{a}_1 & \mathbf{a}_2 & \cdots & \mathbf{a}_n \\ | & | & & | \end{bmatrix} \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix} = x_1\mathbf{a}_1 + x_2\mathbf{a}_2 + \cdots + x_n\mathbf{a}_n$$
+**Formula:** If A = [**a**â‚ **a**â‚‚ â‹¯ **aâ‚™**], then:
 
-**Key Insight:** Matrix times vector = weighted sum of columns
+```
+A**x** = xâ‚Â·aâ‚ + xâ‚‚Â·aâ‚‚ + â‹¯ + xâ‚™Â·aâ‚™
+```
 
 #### Example
 
-$$
-\begin{bmatrix} 2 & 5 \\ 1 & 3 \end{bmatrix} \begin{bmatrix} 1 \\ 2 \end{bmatrix}
-$$
+```
+[2  5] [1]
+[1  3] [2]
+```
 
-**Column 1:** $\mathbf{a}_1 = \begin{bmatrix} 2 \\ 1 \end{bmatrix}$
-
-**Column 2:** $\mathbf{a}_2 = \begin{bmatrix} 5 \\ 3 \end{bmatrix}$
+**Column 1:** **a**â‚ = [2, 1]áµ€
+**Column 2:** **a**â‚‚ = [5, 3]áµ€
 
 **Calculation:**
-
-$$
-1 \cdot \begin{bmatrix} 2 \\ 1 \end{bmatrix}
-+
-2 \cdot \begin{bmatrix} 5 \\ 3 \end{bmatrix}
-=
-\begin{bmatrix} 2 \\ 1 \end{bmatrix}
-+
-\begin{bmatrix} 10 \\ 6 \end{bmatrix}
-=
-\begin{bmatrix} 12 \\ 7 \end{bmatrix}
-$$
+```
+1Â·[2]  + 2Â·[5]  = [2]   + [10]  = [12]
+  [1]       [3]    [1]     [6]     [7]
+```
 
 ---
 
 ### Method 2: Dot Product of Rows
 
-**Formula:**
+**Formula:** Each component is dot product of a row with **x**
 
-$$A\mathbf{x} = \begin{bmatrix} \text{---} & \mathbf{r}_1^T & \text{---} \\ \text{---} & \mathbf{r}_2^T & \text{---} \\ & \vdots & \\ \text{---} & \mathbf{r}_m^T & \text{---} \end{bmatrix} \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix} = \begin{bmatrix} \mathbf{r}_1^T \cdot \mathbf{x} \\ \mathbf{r}_2^T \cdot \mathbf{x} \\ \vdots \\ \mathbf{r}_m^T \cdot \mathbf{x} \end{bmatrix}$$
-
-**Dot Product Formula:**
-
-$$\mathbf{r}_i^T \cdot \mathbf{x} = r_{i1}x_1 + r_{i2}x_2 + \cdots + r_{in}x_n$$
+```
+(A**x**)áµ¢ = ráµ¢ Â· **x** = aáµ¢â‚xâ‚ + aáµ¢â‚‚xâ‚‚ + â‹¯ + aáµ¢â‚™xâ‚™
+```
 
 #### Same Example
 
-$$
-\begin{bmatrix} 2 & 5 \\ 1 & 3 \end{bmatrix} \begin{bmatrix} 1 \\ 2 \end{bmatrix}
-$$
-
-**Row 1:** $\mathbf{r}_1^T = \begin{bmatrix} 2 & 5 \end{bmatrix}$
-
-**Row 2:** $\mathbf{r}_2^T = \begin{bmatrix} 1 & 3 \end{bmatrix}$
+**Row 1:** [2 5]
+**Row 2:** [1 3]
 
 **Calculation:**
+```
+Row 1: 2(1) + 5(2) = 2 + 10 = 12
+Row 2: 1(1) + 3(2) = 1 + 6 = 7
 
-$$
-\begin{bmatrix}
-\mathbf{r}_1^T \cdot \mathbf{x} \\
-\mathbf{r}_2^T \cdot \mathbf{x}
-\end{bmatrix}
-=
-\begin{bmatrix}
-2(1) + 5(2) \\
-1(1) + 3(2)
-\end{bmatrix}
-=
-\begin{bmatrix}
-2 + 10 \\
-1 + 6
-\end{bmatrix}
-=
-\begin{bmatrix} 12 \\ 7 \end{bmatrix}
-$$
+Result: [12]
+        [7]
+```
 
 ---
 
 ### Method 3: Component-by-Component
 
-**General Formula:**
-
-$$(A\mathbf{x})_i = \sum_{j=1}^{n} a_{ij}x_j$$
-
-**Meaning:** The $i$-th component of result is:
-
-$$(A\mathbf{x})_i = a_{i1}x_1 + a_{i2}x_2 + \cdots + a_{in}x_n$$
+```
+(A**x**)áµ¢ = Î£â±¼ aáµ¢â±¼xâ±¼ = aáµ¢â‚xâ‚ + aáµ¢â‚‚xâ‚‚ + â‹¯ + aáµ¢â‚™xâ‚™
+```
 
 ---
 
 ### Complete Example: 3Ã—3 System
 
-$$
-\begin{bmatrix}
-1 & 2 & 3 \\
-4 & 5 & 6 \\
-7 & 8 & 9
-\end{bmatrix}
-\begin{bmatrix} 2 \\ 1 \\ -1 \end{bmatrix}
-$$
+```
+[1  2  3] [2]
+[4  5  6] [1]
+[7  8  9] [-1]
+```
 
-#### Using Column Method
+**Using Column Method:**
+```
+2Â·[1]  + 1Â·[2]  + (-1)Â·[3]  = [2]   + [2]   + [-3]   = [1]
+  [4]      [5]         [6]      [8]     [5]     [-6]     [7]
+  [7]      [8]         [9]      [14]    [8]     [-9]     [13]
+```
 
-$$
-2\begin{bmatrix} 1 \\ 4 \\ 7 \end{bmatrix}
-+
-1\begin{bmatrix} 2 \\ 5 \\ 8 \end{bmatrix}
-+
-(-1)\begin{bmatrix} 3 \\ 6 \\ 9 \end{bmatrix}
-$$
+**Using Row Method:**
+- First: 1(2) + 2(1) + 3(-1) = 2 + 2 - 3 = 1
+- Second: 4(2) + 5(1) + 6(-1) = 8 + 5 - 6 = 7
+- Third: 7(2) + 8(1) + 9(-1) = 14 + 8 - 9 = 13
 
-$$
-= \begin{bmatrix} 2 \\ 8 \\ 14 \end{bmatrix}
-+ \begin{bmatrix} 2 \\ 5 \\ 8 \end{bmatrix}
-+ \begin{bmatrix} -3 \\ -6 \\ -9 \end{bmatrix}
-= \begin{bmatrix} 1 \\ 7 \\ 13 \end{bmatrix}
-$$
-
-#### Using Row Method
-
-**First component:**
-
-$$1(2) + 2(1) + 3(-1) = 2 + 2 - 3 = 1$$
-
-**Second component:**
-
-$$4(2) + 5(1) + 6(-1) = 8 + 5 - 6 = 7$$
-
-**Third component:**
-
-$$7(2) + 8(1) + 9(-1) = 14 + 8 - 9 = 13$$
-
-**Result:** $\begin{bmatrix} 1 \\ 7 \\ 13 \end{bmatrix}$
+Result: [1, 7, 13]áµ€
 
 ---
 
@@ -768,41 +558,43 @@ $$7(2) + 8(1) + 9(-1) = 14 + 8 - 9 = 13$$
 
 ### The Fundamental Question
 
-**Can we solve $A\mathbf{x} = \mathbf{b}$ for EVERY possible $\mathbf{b}$?**
+**Can we solve A**x** = **b** for EVERY possible **b**?**
 
 **Equivalent Questions:**
-1. Do the columns of $A$ span the entire space?
-2. Are the columns linearly independent?
-3. Is $A$ invertible (non-singular)?
-4. Is $\det(A) \neq 0$?
+1. Do columns of A span the entire space?
+2. Are columns linearly independent?
+3. Is A invertible (non-singular)?
+4. Is det(A) â‰  0?
 
 ---
 
 ### Linear Independence
 
-**Definition:** Vectors $\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_n$ are **linearly independent** if:
+**Definition:** Vectors **v**â‚, **v**â‚‚, ..., **vâ‚™** are linearly independent if:
 
-$$c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + \cdots + c_n\mathbf{v}_n = \mathbf{0} \implies c_1 = c_2 = \cdots = c_n = 0$$
+```
+câ‚Â·vâ‚ + câ‚‚Â·vâ‚‚ + â‹¯ + câ‚™Â·vâ‚™ = 0  âŸ¹  câ‚ = câ‚‚ = â‹¯ = câ‚™ = 0
+```
 
 **Meaning:** The ONLY way to get zero vector is with all zero coefficients.
 
-**Linear Dependence:** If we can write:
-
-$$\mathbf{v}_3 = c_1\mathbf{v}_1 + c_2\mathbf{v}_2$$
-
-then $\mathbf{v}_3$ adds **nothing new** to the span.
+**Linear Dependence:** If one vector is a combination of others:
+```
+vâ‚ƒ = câ‚Â·vâ‚ + câ‚‚Â·vâ‚‚
+```
+then vâ‚ƒ adds nothing new to the span.
 
 ---
 
 ### Test for Independence (2D)
 
 **Two vectors in 2D:**
+```
+vâ‚ = [a]    vâ‚‚ = [c]
+     [b]         [d]
+```
 
-$$\mathbf{v}_1 = \begin{bmatrix} a \\ b \end{bmatrix}, \quad \mathbf{v}_2 = \begin{bmatrix} c \\ d \end{bmatrix}$$
-
-**Independent if and only if:**
-
-$$\det\begin{bmatrix} a & c \\ b & d \end{bmatrix} = ad - bc \neq 0$$
+**Independent if and only if:** det([a c; b d]) = ad - bc â‰  0
 
 **Geometric Test:** Not parallel (not scalar multiples)
 
@@ -812,13 +604,9 @@ $$\det\begin{bmatrix} a & c \\ b & d \end{bmatrix} = ad - bc \neq 0$$
 
 **Three vectors in 3D:**
 
-**Matrix form:**
+Matrix form: A = [**v**â‚ **v**â‚‚ **v**â‚ƒ]
 
-$$A = \begin{bmatrix} | & | & | \\ \mathbf{v}_1 & \mathbf{v}_2 & \mathbf{v}_3 \\ | & | & | \end{bmatrix}$$
-
-**Independent if and only if:**
-
-$$\det(A) \neq 0$$
+**Independent if and only if:** det(A) â‰  0
 
 **Geometric Test:** Not coplanar (don't all lie in same plane)
 
@@ -829,38 +617,414 @@ $$\det(A) \neq 0$$
 #### Non-Singular (Good!) Matrix
 
 **Properties:**
-- Columns are linearly independent
-- Rows are linearly independent
-- $\det(A) \neq 0$
-- Full rank: $\text{rank}(A) = n$
-- Invertible: $A^{-1}$ exists
-- Solution exists for EVERY $\mathbf{b}$
-- Unique solution: $\mathbf{x} = A^{-1}\mathbf{b}$
+- Columns linearly independent
+- Rows linearly independent
+- det(A) â‰  0
+- Full rank: rank(A) = n
+- Invertible: Aâ»Â¹ exists
+- **Solution exists for EVERY b**
+- Unique solution: **x** = Aâ»Â¹**b**
 
 **Example (2Ã—2):**
+```
+A = [2   -1]
+    [-1   2]
 
-$$A = \begin{bmatrix} 2 & -1 \\ -1 & 2 \end{bmatrix}$$
-
-$$\det(A) = 2(2) - (-1)(-1) = 4 - 1 = 3 \neq 0 \quad \checkmark$$
+det(A) = 2(2) - (-1)(-1) = 4 - 1 = 3 â‰  0  âœ“
+```
 
 ---
 
 #### Singular (Problematic) Matrix
 
 **Properties:**
-- Columns are linearly dependent
-- $\det(A) = 0$
-- Deficient rank: $\text{rank}(A) < n$
+- Columns linearly dependent
+- det(A) = 0
+- Deficient rank: rank(A) < n
 - NOT invertible
-- Solution may not exist for some $\mathbf{b}$
+- Solution may NOT exist for some **b**
 - If solution exists, infinitely many solutions
 
 **Example (2Ã—2):**
-
-$$A = \begin{bmatrix} 1 & 2 \\ 2 & 4 \end{bmatrix}$$
+```
+A = [1  2]
+    [2  4]
 
 Column 2 = 2 Ã— Column 1 (dependent!)
 
-$$\det(A) = 1(4) - 2(2) = 4 - 4 = 0 \quad \text{(Singular!)}$$
+det(A) = 1(4) - 2(2) = 0  (Singular!)
+```
 
-**Span:** All combinations lie on line $y = 2x$ (not full plane
+Span: All combinations lie on line y = 2x (not full plane)
+
+Solvable only if: **b** is on this line
+
+---
+
+### Example: When is There NO Solution?
+
+**System:**
+```
+[1  2] [x]   [3]
+[2  4] [y] = [7]
+```
+
+**Analysis:**
+```
+xÂ·[1]  + yÂ·[2]  = [3]
+  [2]      [4]    [7]
+```
+
+Both columns lie on line y = 2x.
+
+All combinations satisfy: second component = 2 Ã— first component
+
+**Check b:** Is 7 = 2 Ã— 3? NO! (7 â‰  6)
+
+**Conclusion:** NO SOLUTION exists
+
+---
+
+### Example: Singular 3Ã—3 Matrix
+
+```
+A = [1  2  3]
+    [2  4  6]
+    [0  1  1]
+```
+
+Row 2 = 2 Ã— Row 1 (dependent!)
+
+det(A) = 1(4Â·1 - 6Â·1) - 2(2Â·1 - 6Â·0) + 3(2Â·1 - 4Â·0)
+       = 1(-2) - 2(2) + 3(2)
+       = -2 - 4 + 6 = 0
+
+Span: All combinations lie in a 2D plane in 3D space
+
+---
+
+## Geometric Interpretation in n-Dimensions
+
+### Extending to Higher Dimensions
+
+**n equations, n unknowns:**
+
+A**x** = **b**, where A âˆˆ â„â¿Ë£â¿, **x**, **b** âˆˆ â„â¿
+
+---
+
+### Row Picture in nD
+
+**Each equation:** Hyperplane in n-dimensional space
+
+Examples:
+- 2D: Hyperplane = line (1D in 2D space)
+- 3D: Hyperplane = plane (2D in 3D space)
+- 4D: Hyperplane = 3D space in 4D
+- nD: Hyperplane = (n-1)-D in n-D space
+
+**Solution:** Point where all n hyperplanes intersect
+
+**Challenge:** Impossible to visualize for n > 3
+
+---
+
+### Column Picture in nD â­ (More Practical)
+
+```
+xâ‚Â·aâ‚ + xâ‚‚Â·aâ‚‚ + â‹¯ + xâ‚™Â·aâ‚™ = b
+```
+
+**Each column:** n-dimensional vector
+
+**Question:** Can we combine these n vectors to reach **b**?
+
+**Key Insight:** Think abstractly about linear combinations, not geometry
+
+---
+
+### Example: 9D System
+
+**System:** 9 equations, 9 unknowns
+
+A âˆˆ â„â¹Ë£â¹, **x**, **b** âˆˆ â„â¹
+
+**Column Picture:**
+- 9 vectors in 9-dimensional space
+- Each vector has 9 components
+- Find combination to reach **b**
+
+**Non-singular case:**
+- 9 independent vectors
+- Span: All of â„â¹
+- Can reach ANY **b** âˆˆ â„â¹
+
+**Singular case (e.g., column 9 = column 8):**
+- Only 8 independent vectors
+- Span: 8-dimensional "hyperplane" in 9D
+- Can only reach **b** in this hyperplane
+
+---
+
+### Random Matrices
+
+**Fact:** A random n Ã— n matrix is non-singular with probability 1
+
+Example in MATLAB:
+```matlab
+A = rand(9, 9);  % Generate random 9Ã—9 matrix
+det(A)           % Almost certainly non-zero
+```
+
+**Why?** The set of singular matrices has "measure zero"
+
+---
+
+## Practice Problems
+
+### Problem 1: 2Ã—2 System
+
+**Solve:**
+```
+3x + 2y = 7
+x - y = 1
+```
+
+**Solution:**
+
+From Eq 2: x = y + 1
+
+Substitute into Eq 1:
+```
+3(y + 1) + 2y = 7
+3y + 3 + 2y = 7
+5y = 4
+y = 4/5 = 0.8
+```
+
+```
+x = 0.8 + 1 = 1.8
+```
+
+**Answer:** (1.8, 0.8) or (9/5, 4/5)
+
+**Verification:**
+- 3(1.8) + 2(0.8) = 5.4 + 1.6 = 7 âœ“
+- 1.8 - 0.8 = 1 âœ“
+
+---
+
+### Problem 2: Column Picture
+
+**Solve:**
+```
+[1  3] [x]   [5]
+[2  7] [y] = [11]
+```
+
+**Solution:**
+
+```
+xÂ·[1]  + yÂ·[3]  = [5]
+  [2]      [7]    [11]
+```
+
+System:
+```
+x + 3y = 5
+2x + 7y = 11
+```
+
+From Eq 1: x = 5 - 3y
+
+Into Eq 2:
+```
+2(5 - 3y) + 7y = 11
+10 - 6y + 7y = 11
+y = 1
+```
+
+```
+x = 5 - 3(1) = 2
+```
+
+**Answer:** **x** = [2, 1]áµ€
+
+---
+
+### Problem 3: Check Singularity
+
+**Is this matrix singular?**
+```
+A = [1  2  3]
+    [2  4  6]
+    [1  1  1]
+```
+
+**Solution:**
+
+Check columns:
+- Column 2 = 2 Ã— Column 1
+- Column 3 = 3 Ã— Column 1
+
+Columns are dependent!
+
+det(A) = 1(4Â·1 - 6Â·1) - 2(2Â·1 - 6Â·1) + 3(2Â·1 - 4Â·1)
+       = 1(-2) - 2(-4) + 3(-2)
+       = -2 + 8 - 6 = 0
+
+**Answer:** YES, matrix is singular (det(A) = 0)
+
+---
+
+### Problem 4: Span Question
+
+**Do these vectors span â„Â³?**
+```
+vâ‚ = [1]    vâ‚‚ = [0]    vâ‚ƒ = [1]
+     [0]         [1]         [1]
+     [1]         [1]         [0]
+```
+
+**Solution:**
+
+Matrix form:
+```
+A = [1  0  1]
+    [0  1  1]
+    [1  1  0]
+```
+
+det(A) = 1(1Â·0 - 1Â·1) - 0 + 1(0Â·1 - 1Â·1)
+       = 1(-1) + 1(-1)
+       = -2 â‰  0
+
+**Answer:** YES, they span â„Â³ (independent, det â‰  0)
+
+---
+
+## Key Formulas Reference
+
+### System Representation
+
+A**x** = **b**
+
+```
+[aâ‚â‚  ...  aâ‚â‚™] [xâ‚]   [bâ‚]
+[...  ...  ...]  [â‹®]  = [â‹®]
+[aâ‚™â‚  ...  aâ‚™â‚™] [xâ‚™]   [bâ‚™]
+```
+
+---
+
+### Linear Combination
+
+```
+câ‚Â·vâ‚ + câ‚‚Â·vâ‚‚ + â‹¯ + câ‚™Â·vâ‚™
+```
+
+---
+
+### Matrix-Vector Multiplication
+
+**Column view:**
+```
+A**x** = xâ‚Â·aâ‚ + xâ‚‚Â·aâ‚‚ + â‹¯ + xâ‚™Â·aâ‚™
+```
+
+**Row view:**
+```
+(A**x**)áµ¢ = aáµ¢â‚xâ‚ + aáµ¢â‚‚xâ‚‚ + â‹¯ + aáµ¢â‚™xâ‚™
+```
+
+---
+
+### Determinant (2Ã—2)
+
+```
+det([a  b]) = ad - bc
+    [c  d]
+```
+
+---
+
+### Determinant (3Ã—3)
+
+```
+det([a  b  c])
+    [d  e  f] = a(ei - fh) - b(di - fg) + c(dh - eg)
+    [g  h  i]
+```
+
+---
+
+### Linear Independence
+
+Vectors are independent if:
+```
+câ‚Â·vâ‚ + â‹¯ + câ‚™Â·vâ‚™ = 0  âŸ¹  câ‚ = â‹¯ = câ‚™ = 0
+```
+
+---
+
+### Solvability Conditions
+
+For square matrix A, these are equivalent:
+
+1. A**x** = **b** has unique solution for every **b**
+2. Columns of A are linearly independent
+3. Columns of A span â„â¿
+4. det(A) â‰  0
+5. A is invertible (non-singular)
+6. rank(A) = n
+
+---
+
+## Summary
+
+### What We Learned
+
+1. **Three perspectives** on linear systems:
+   - Row picture: Geometric objects (lines, planes, hyperplanes)
+   - Column picture: Linear combinations of vectors â­
+   - Matrix form: Compact algebraic notation
+
+2. **Linear combinations** are the foundation
+   - Matrix-vector multiplication produces linear combination
+   - Solution means finding right coefficients
+
+3. **Solvability** depends on column independence
+   - Independent columns â†’ span full space â†’ solution for all **b**
+   - Dependent columns â†’ span subspace â†’ some **b** unreachable
+
+4. **Column picture scales** to higher dimensions
+
+---
+
+### Next Lecture
+
+**Elimination:** Systematic algorithm to solve A**x** = **b**
+- Gaussian elimination
+- Forward elimination and back substitution
+- Finding pivots
+- When elimination fails (singular cases)
+
+---
+
+## Additional Resources
+
+- **MIT OpenCourseWare:** ocw.mit.edu/18-06S05
+- **Course Website:** web.mit.edu/18.06
+- **Video Lectures:** YouTube playlist for 18.06
+- **Textbook:** Introduction to Linear Algebra (Strang)
+
+---
+
+**License:** Creative Commons BY-NC-SA  
+**Course:** MIT OpenCourseWare  
+**Instructor:** Professor Gilbert Strang, Spring 2005
+
+---
+
+*Complete notes with solutions compiled from MIT 18.06 Linear Algebra Lecture 1*  
+*For educational purposes - part of personal study repository*
