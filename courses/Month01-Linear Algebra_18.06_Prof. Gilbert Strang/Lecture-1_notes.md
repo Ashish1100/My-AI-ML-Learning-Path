@@ -360,8 +360,6 @@ This lecture introduced the **geometric intuition** behind linear systems:
 
 **Central Question:** What combinations of column vectors can we produce?
 
-**Next Step:** Systematic elimination method to solve any linear system.
-
 ---
 
 ## Additional Resources
