@@ -29,7 +29,7 @@
 The fundamental problem of linear algebra is to **solve systems of linear equations**. This lecture introduces three different ways to visualize and understand systems of linear equations:
 
 1. **Row Picture** - One equation at a time (geometric view)
-2. **Column Picture** - Linear combinations of column vectors â­ (most important)
+2. **Column Picture** - Linear combinations of column vectors (most important)
 3. **Matrix Form** - Compact algebraic representation
 
 We start with n equations and n unknowns (square system).
