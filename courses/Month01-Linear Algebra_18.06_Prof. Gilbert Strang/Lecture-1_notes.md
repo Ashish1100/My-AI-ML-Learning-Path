@@ -268,13 +268,13 @@ Row 2 Â· x = [1  3] Â· [1] = 1(1) + 3(2) = 7
                      [2]
 ```
 
-Result: **[12, 7]áµ€**
+Result: **[12, 7]**
 
 ### General Form
 
 **For Ax = b:**
 ```
-AÂ·x = xâ‚(column 1) + xâ‚‚(column 2) + ... + xâ‚™(column n) = b
+A·x = x₁ (column 1) + x₂ (column 2) + ⋯ + xₙ (column n) = b
 ```
 
 This is the **fundamental way** to think about matrix-vector multiplication!
@@ -286,9 +286,9 @@ This is the **fundamental way** to think about matrix-vector multiplication!
 ### Linear Combination
 The **most fundamental operation** in linear algebra:
 ```
-câ‚vâ‚ + câ‚‚vâ‚‚ + ... + câ‚™vâ‚™
+c₁v₁ + c₂v₂ + ⋯ + cₙvₙ
 ```
-where câ‚, câ‚‚, ..., câ‚™ are scalars and vâ‚, vâ‚‚, ..., vâ‚™ are vectors.
+where c₁, c₂, …, cₙ are scalars and v₁, v₂, …, vₙ are vectors.
 
 ### Solvability
 **Question:** Can we solve Ax = b for every right-hand side b?
@@ -309,9 +309,9 @@ where câ‚, câ‚‚, ..., câ‚™ are scalars and vâ‚, vâ‚‚, .
 - Their combinations fill only a subspace
 - Matrix is singular
 
-### Higher Dimensions (n Ã— n systems)
+### Higher Dimensions (n × n systems)
 
-**9Ã—9 Example:**
+**9 × 9 Example:**
 - 9 equations, 9 unknowns
 - 9 columns, each a vector in 9D space
 - If columns are independent: combinations fill all of 9D space
@@ -329,7 +329,7 @@ where câ‚, câ‚‚, ..., câ‚™ are scalars and vâ‚, vâ‚‚, .
 ### Q2: What is a linear combination?
 Multiplying vectors by scalars and adding them:
 ```
-câ‚vâ‚ + câ‚‚vâ‚‚ + ... + câ‚™vâ‚™
+c₁v₁ + c₂v₂ + ⋯ + cₙvₙ
 ```
 
 ### Q3: What does Ax represent geometrically?
@@ -355,7 +355,7 @@ It reveals the **fundamental structure** of linear systems and helps understand:
 This lecture introduced the **geometric intuition** behind linear systems:
 
 1. **Row picture:** intersecting geometric objects
-2. **Column picture:** combinations of column vectors (â­ most important)
+2. **Column picture:** combinations of column vectors (most important)
 3. **Matrix form:** compact Ax = b notation
 
 **Central Question:** What combinations of column vectors can we produce?
