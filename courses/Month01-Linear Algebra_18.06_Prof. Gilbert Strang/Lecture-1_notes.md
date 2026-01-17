@@ -116,21 +116,21 @@ b = [0]
 
 ### Row Picture (2D)
 
-**Equation 1:** 2x - y = 0
-- Passes through origin (0, 0) âœ“
-- Another point: (1, 2) âœ“
-- This is a **line** through these points
+**Equation 1:** 2x - y = 0  
+- Passes through origin (0, 0) 
+- Another point: (1, 2) 
+- This is a **line** through these points  
 
-**Equation 2:** -x + 2y = 3
-- When y = 0: x = -3 â†’ point (-3, 0)
-- When x = -1: y = 1 â†’ point (-1, 1)
-- This is a **line** through these points
+**Equation 2:** -x + 2y = 3  
+- When y = 0: x = -3 → point (-3, 0)  
+- When x = -1: y = 1 → point (-1, 1)  
+- This is a **line** through these points  
 
-**Solution:** Where the two lines intersect â†’ **(x, y) = (1, 2)**
+**Solution:** Where the two lines intersect → **(x, y) = (1, 2)**  
 
-**Verification:**
-- Equation 1: 2(1) - 2 = 0 âœ“
-- Equation 2: -1 + 2(2) = 3 âœ“
+**Verification:**  
+- Equation 1: 2(1) - 2 = 0 
+- Equation 2: -1 + 2(2) = 3
 
 ### Column Picture (2D) â­
 
