@@ -283,33 +283,192 @@ This is the **fundamental way** to think about matrix-vector multiplication!
 
 ## Key Concepts
 
-### Linear Combination
-The **most fundamental operation** in linear algebra:
-```
-c₁v₁ + c₂v₂ + ⋯ + cₙvₙ
-```
-where c₁, c₂, …, cₙ are scalars and v₁, v₂, …, vₙ are vectors.
+### 1. Linear Combination (Definition)
 
-### Solvability
+**Definition:** Given vectors v₁, v₂, …, vₙ ∈ ℝᵐ and scalars c₁, c₂, …, cₙ ∈ ℝ, a **linear combination** is:
+
+c₁v₁ + c₂v₂ + ⋯ + cₙvₙ = Σᵢ₌₁ⁿ cᵢvᵢ
+
+**Properties:**
+- Result is a vector in ℝᵐ (same space as original vectors)
+- Scalars can be any real numbers (positive, negative, zero)
+- Order doesn't matter (commutative)
+
+---
+
+### 2. Span (All Linear Combinations)
+
+**Definition:** The **span** of vectors {v₁, v₂, …, vₙ} is the set of ALL possible linear combinations:
+
+span{v₁, …, vₙ} = { Σᵢ₌₁ⁿ cᵢvᵢ | cᵢ ∈ ℝ }
+
+**Key Question:**  
+What is span{c₁, c₂, …, cₙ}?
+
+**Examples:**
+
+**2D Case:**
+
+span{ [2, -1]ᵀ , [-1, 2]ᵀ } = ℝ²  
+(entire 2D plane)
+
+**Why?**  
+These two vectors are not parallel (linearly independent), so their combinations fill all of ℝ².
+
+**3D Case:**
+
+span{ [2, -1, 0]ᵀ , [-1, 2, -3]ᵀ , [0, -1, 4]ᵀ } = ℝ³  
+(entire 3D space)
+
+**Why?**  
+These three vectors are linearly independent, so they span all of ℝ³.
+
+---
+
+### 3. Linear Independence
+
+**Definition:** Vectors v₁, …, vₙ are **linearly independent** if:
+
+c₁v₁ + c₂v₂ + ⋯ + cₙvₙ = 0  
+⇒ c₁ = c₂ = ⋯ = cₙ = 0
+
+**In words:**  
+The ONLY way to make the zero vector is with all zero coefficients.
+
+**Equivalently:**  
+No vector can be written as a linear combination of the others.
+
+**Examples:**
+
+**Independent:**  
+[1, 0]ᵀ , [0, 1]ᵀ  
+(standard basis vectors)
+
+**Dependent:**  
+[1, 2]ᵀ , [2, 4]ᵀ  
+(second = 2 × first)
+
+---
+
+### 4. Column Space
+
+**Definition:** The **column space** of matrix A, denoted C(A), is the span of its columns:
+
+C(A) = span{a₁, a₂, …, aₙ}
+
+where aᵢ are the columns of A.
+
+**Significance:**  
+C(A) is the set of all vectors b such that:
+
+A·x = b  
+
+has a solution.
+
+
+### 5 Solvability
 **Question:** Can we solve Ax = b for every right-hand side b?
 
 **Depends on the columns of A:**
 - If columns are **independent**: YES (non-singular, invertible)
 - If columns are **dependent**: NO (singular, not invertible)
 
-### Independence vs Dependence
+#### Central Question
 
-**Independent columns:**
-- Do not lie in the same lower-dimensional subspace
-- Their combinations fill the entire space
-- Matrix is invertible
+**Can we solve** A·x = b **for every** b?
 
-**Dependent columns:**
-- One or more columns can be written as combinations of others
-- Their combinations fill only a subspace
-- Matrix is singular
+---
 
-### Higher Dimensions (n × n systems)
+#### Case 1: Non-Singular (Invertible) Matrix ✅
+
+**Conditions (all equivalent):**
+1. Columns of A are **linearly independent**
+2. Columns span ℝⁿ (full space)
+3. C(A) = ℝⁿ
+4. Matrix A has **full rank** (rank = n)
+5. det(A) ≠ 0
+6. A is **invertible**
+
+**Result:**
+
+For **EVERY** b ∈ ℝⁿ,  
+A·x = b has a **UNIQUE solution**
+
+**Example:** Matrix from Examples 1 and 2
+
+A =
+[ 2  -1   0  
+ -1   2  -1  
+  0  -3   4 ]
+
+is non-singular (columns are independent).
+
+---
+
+#### Case 2: Singular Matrix ❌
+
+**Conditions:**
+1. Columns of A are **linearly dependent**
+2. At least one column is a combination of others
+3. Columns do NOT span ℝⁿ
+4. C(A) ⊊ ℝⁿ (proper subset)
+5. Rank < n
+6. det(A) = 0
+
+**Result:**
+
+A·x = b has a solution  
+**ONLY when** b ∈ C(A)
+
+**Most** b values → **no solution** exists!
+
+---
+
+#### Example of Singular System (3D)
+
+**Scenario:** Third column = first column + second column
+
+A =
+[ 1   0   1  
+  0   1   1  
+  0   0   0 ]
+
+**Analysis:**
+- Column 3 = Column 1 + Column 2
+- Third column gives **no new information**
+- All combinations:
+
+c₁c₁ + c₂c₂ + c₃(c₁ + c₂)  
+= (c₁ + c₃)c₁ + (c₂ + c₃)c₂
+
+- Only 2 independent columns  
+→ span a **plane** in ℝ³
+
+**Solvability:**
+- Can solve for b **in the plane**
+- Cannot solve for b **outside the plane**
+
+**Geometric picture:**  
+Column space C(A) is a **2D plane** in 3D space.
+
+---
+
+#### Test for Solvability
+
+**Method 1:** Check if b ∈ C(A)
+- Can b be written as linear combination of columns?
+
+**Method 2:** Use elimination
+- If elimination succeeds → solvable
+- If get 0 = nonzero → not solvable
+
+**Method 3:** Check rank
+- If rank(A) = n → solvable for all b
+- If rank(A) < n → solvable only for some b
+
+---
+
+#### Higher Dimensions (n × n systems)
 
 **9 × 9 Example:**
 - 9 equations, 9 unknowns
@@ -439,92 +598,6 @@ import numpy as np
 
 A = np.random.rand(9, 9)  # Almost certainly invertible
 ```
-
----
-
-## Key Concepts with Formulas
-
-### 1. Linear Combination (Definition)
-
-**Definition:** Given vectors v₁, v₂, …, vₙ ∈ ℝᵐ and scalars c₁, c₂, …, cₙ ∈ ℝ, a **linear combination** is:
-
-c₁v₁ + c₂v₂ + ⋯ + cₙvₙ = Σᵢ₌₁ⁿ cᵢvᵢ
-
-**Properties:**
-- Result is a vector in ℝᵐ (same space as original vectors)
-- Scalars can be any real numbers (positive, negative, zero)
-- Order doesn't matter (commutative)
-
----
-
-### 2. Span (All Linear Combinations)
-
-**Definition:** The **span** of vectors {v₁, v₂, …, vₙ} is the set of ALL possible linear combinations:
-
-span{v₁, …, vₙ} = { Σᵢ₌₁ⁿ cᵢvᵢ | cᵢ ∈ ℝ }
-
-**Key Question:**  
-What is span{c₁, c₂, …, cₙ}?
-
-**Examples:**
-
-**2D Case:**
-
-span{ [2, -1]ᵀ , [-1, 2]ᵀ } = ℝ²  
-(entire 2D plane)
-
-**Why?**  
-These two vectors are not parallel (linearly independent), so their combinations fill all of ℝ².
-
-**3D Case:**
-
-span{ [2, -1, 0]ᵀ , [-1, 2, -3]ᵀ , [0, -1, 4]ᵀ } = ℝ³  
-(entire 3D space)
-
-**Why?**  
-These three vectors are linearly independent, so they span all of ℝ³.
-
----
-
-### 3. Linear Independence
-
-**Definition:** Vectors v₁, …, vₙ are **linearly independent** if:
-
-c₁v₁ + c₂v₂ + ⋯ + cₙvₙ = 0  
-⇒ c₁ = c₂ = ⋯ = cₙ = 0
-
-**In words:**  
-The ONLY way to make the zero vector is with all zero coefficients.
-
-**Equivalently:**  
-No vector can be written as a linear combination of the others.
-
-**Examples:**
-
-**Independent:**  
-[1, 0]ᵀ , [0, 1]ᵀ  
-(standard basis vectors)
-
-**Dependent:**  
-[1, 2]ᵀ , [2, 4]ᵀ  
-(second = 2 × first)
-
----
-
-### 4. Column Space
-
-**Definition:** The **column space** of matrix A, denoted C(A), is the span of its columns:
-
-C(A) = span{a₁, a₂, …, aₙ}
-
-where aᵢ are the columns of A.
-
-**Significance:**  
-C(A) is the set of all vectors b such that:
-
-A·x = b  
-
-has a solution.
 
 ---
 
