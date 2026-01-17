@@ -442,6 +442,92 @@ A = np.random.rand(9, 9)  # Almost certainly invertible
 
 ---
 
+## Key Concepts with Formulas
+
+### 1. Linear Combination (Definition)
+
+**Definition:** Given vectors v₁, v₂, …, vₙ ∈ ℝᵐ and scalars c₁, c₂, …, cₙ ∈ ℝ, a **linear combination** is:
+
+c₁v₁ + c₂v₂ + ⋯ + cₙvₙ = Σᵢ₌₁ⁿ cᵢvᵢ
+
+**Properties:**
+- Result is a vector in ℝᵐ (same space as original vectors)
+- Scalars can be any real numbers (positive, negative, zero)
+- Order doesn't matter (commutative)
+
+---
+
+### 2. Span (All Linear Combinations)
+
+**Definition:** The **span** of vectors {v₁, v₂, …, vₙ} is the set of ALL possible linear combinations:
+
+span{v₁, …, vₙ} = { Σᵢ₌₁ⁿ cᵢvᵢ | cᵢ ∈ ℝ }
+
+**Key Question:**  
+What is span{c₁, c₂, …, cₙ}?
+
+**Examples:**
+
+**2D Case:**
+
+span{ [2, -1]ᵀ , [-1, 2]ᵀ } = ℝ²  
+(entire 2D plane)
+
+**Why?**  
+These two vectors are not parallel (linearly independent), so their combinations fill all of ℝ².
+
+**3D Case:**
+
+span{ [2, -1, 0]ᵀ , [-1, 2, -3]ᵀ , [0, -1, 4]ᵀ } = ℝ³  
+(entire 3D space)
+
+**Why?**  
+These three vectors are linearly independent, so they span all of ℝ³.
+
+---
+
+### 3. Linear Independence
+
+**Definition:** Vectors v₁, …, vₙ are **linearly independent** if:
+
+c₁v₁ + c₂v₂ + ⋯ + cₙvₙ = 0  
+⇒ c₁ = c₂ = ⋯ = cₙ = 0
+
+**In words:**  
+The ONLY way to make the zero vector is with all zero coefficients.
+
+**Equivalently:**  
+No vector can be written as a linear combination of the others.
+
+**Examples:**
+
+**Independent:**  
+[1, 0]ᵀ , [0, 1]ᵀ  
+(standard basis vectors)
+
+**Dependent:**  
+[1, 2]ᵀ , [2, 4]ᵀ  
+(second = 2 × first)
+
+---
+
+### 4. Column Space
+
+**Definition:** The **column space** of matrix A, denoted C(A), is the span of its columns:
+
+C(A) = span{a₁, a₂, …, aₙ}
+
+where aᵢ are the columns of A.
+
+**Significance:**  
+C(A) is the set of all vectors b such that:
+
+A·x = b  
+
+has a solution.
+
+---
+
 ## Important Questions
 
 ### Q1: What are the three pictures of linear systems?
