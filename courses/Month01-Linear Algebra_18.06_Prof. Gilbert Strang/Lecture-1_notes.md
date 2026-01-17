@@ -319,6 +319,128 @@ where c₁, c₂, …, cₙ are scalars and v₁, v₂, …, vₙ are vectors.
 
 ---
 
+### Comparison of Methods
+
+| Aspect | Column Method | Row Method |
+|--------|---------------|------------|
+| **Viewpoint** | Linear combinations | Dot products |
+| **Conceptual** | Modern, preferred by Strang | Traditional |
+| **Connects to** | Span, column space | Individual equations |
+| **Best for** | Understanding structure | Quick calculation |
+| **Generalizes** | Excellently to higher dimensions | Less intuitive in high-D |
+
+**Both methods give the same answer!**
+
+---
+
+## Quick Reference
+
+### Notation
+- **A**: m × n matrix (m rows, n columns)
+- **x**: n × 1 column vector (unknowns)
+- **b**: m × 1 column vector (right-hand side)
+- **aᵢ**: i-th column of A
+- **rᵢ**: i-th row of A
+
+### Key Formulas
+
+**System of Equations:**  
+A·x = b
+
+**Column Picture:**  
+x₁a₁ + x₂a₂ + ⋯ + xₙaₙ = b
+
+**Linear Combination:**  
+c₁v₁ + c₂v₂ + ⋯ + cₙvₙ
+
+**Span:**  
+span{v₁, … , vₙ} = { c₁v₁ + ⋯ + cₙvₙ | cᵢ ∈ ℝ }
+
+**Linear Independence:**  
+c₁v₁ + ⋯ + cₙvₙ = 0 ⇒ c₁ = ⋯ = cₙ = 0
+
+**Column Space:**  
+C(A) = span{columns of A}
+
+---
+
+### Fundamental Operations
+
+**Linear Combination:**  
+c₁v₁ + c₂v₂ + ⋯ + cₙvₙ  
+→ Most important operation in linear algebra!
+
+**Matrix-Vector Product:**  
+A·x = x₁a₁ + x₂a₂ + ⋯ + xₙaₙ  
+→ View as linear combination of columns!
+
+#### 3. Solvability Condition
+
+A·x = b is solvable for all b  
+⇔ columns of A are linearly independent
+
+---
+
+### Key Terms
+
+| Term | Meaning |
+|------|---------|
+| **Linear combination** | Weighted sum of vectors |
+| **Span** | All possible linear combinations |
+| **Linearly independent** | No vector is a combination of others |
+| **Column space** | Span of columns of a matrix |
+| **Non-singular** | Invertible, full rank, det ≠ 0 |
+| **Singular** | Not invertible, dependent columns |
+| **Solvable** | 𝒃 is in the column space |
+
+---
+
+## Higher Dimensions
+
+### 9-Dimensional Example
+
+**System:** 9 equations, 9 unknowns
+
+A·x = b,   A ∈ ℝ⁹ˣ⁹,   x, b ∈ ℝ⁹
+
+**Column Picture:**  
+x₁c₁ + x₂c₂ + ⋯ + x₉c₉ = b
+
+where each cᵢ ∈ ℝ⁹ (9-component vectors).
+
+---
+
+### Visualization Challenge
+
+**Can't draw 9D space!** But we can think about it abstractly:
+
+**Good Case (Non-singular):**
+- 9 linearly independent vectors in ℝ⁹
+- Their combinations **fill all of** ℝ⁹
+- Can reach **any** b ∈ ℝ⁹
+- Solution exists for **every** right-hand side
+
+**Bad Case (Singular):**
+- Example: 9th column = 8th column
+- Only 8 independent columns
+- Combinations fill an **8-dimensional hyperplane** in ℝ⁹
+- Can reach only b in this hyperplane
+- Most b values → no solution
+
+---
+
+### Random Matrices
+
+**Fact:** Random n × n matrix is non-singular with probability 1.
+
+**PYTHON Example:**
+```python
+import numpy as np
+
+A = np.random.rand(9, 9)  # Almost certainly invertible
+
+---
+
 ## Important Questions
 
 ### Q1: What are the three pictures of linear systems?
