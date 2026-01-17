@@ -366,7 +366,7 @@ A·x = b
 has a solution.
 
 
-### 5 Solvability
+### 5. Solvability
 **Question:** Can we solve Ax = b for every right-hand side b?
 
 **Depends on the columns of A:**
@@ -379,7 +379,7 @@ has a solution.
 
 ---
 
-#### Case 1: Non-Singular (Invertible) Matrix ✅
+#### Case 1: Non-Singular (Invertible) Matrix 
 
 **Conditions (all equivalent):**
 1. Columns of A are **linearly independent**
@@ -405,7 +405,7 @@ is non-singular (columns are independent).
 
 ---
 
-#### Case 2: Singular Matrix ❌
+#### Case 2: Singular Matrix 
 
 **Conditions:**
 1. Columns of A are **linearly dependent**
