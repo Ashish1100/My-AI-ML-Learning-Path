@@ -660,6 +660,161 @@ No solution exists for those 𝒃 outside the column space.
 
 ---
 
+## Top 5 Interview Questions**
+
+
+### 1. What are the three ways to view a linear system Ax = b?
+
+### Question  
+Explain the **row picture, column picture, and matrix picture**. When is each useful?
+
+### Answer  
+
+**Row picture**
+- Each row = one equation  
+- 2D → line, 3D → plane  
+- Solution = intersection point  
+- Best for visualization in low dimensions  
+
+**Column picture (most important)**
+- Columns of A are vectors  
+- Solve:  
+  x₁a₁ + x₂a₂ + ⋯ + xₙaₙ = b  
+- Key question: *Is b in span of columns?*  
+- Best for theory, ML, and high dimensions  
+
+**Matrix picture**
+- Compact form: Ax = b  
+- Used for computation (elimination, algorithms)
+
+---
+
+### 2. Solve a 2×2 system using column picture
+
+### Question  
+Solve:
+
+2x − y = 0  
+−x + 2y = 3  
+
+### Solution  
+
+Column form:
+
+x[2, −1]ᵀ + y[−1, 2]ᵀ = [0, 3]ᵀ  
+
+From equations:
+
+2x − y = 0 → y = 2x  
+−x + 2(2x) = 3  
+3x = 3 → x = 1  
+y = 2  
+
+**Answer:**  
+x = 1, y = 2  
+
+**Geometric meaning:**  
+1 copy of column1 + 2 copies of column2 = b
+
+---
+
+### 3. When does Ax = b have a unique solution for all b?
+
+### Question  
+Give conditions for solvability for every b.
+
+### Answer  
+
+All are equivalent:
+
+- Columns span ℝⁿ  
+- Columns are linearly independent  
+- rank(A) = n  
+- det(A) ≠ 0  
+- A is invertible  
+- Unique solution for every b  
+
+**Interpretation:**  
+Column space = ℝⁿ → every b is reachable
+
+---
+
+### 4. When does Ax = b have no solution?
+
+### Question  
+Give a geometric condition and example.
+
+### Answer  
+
+**Condition**
+- Columns lie in lower dimension (line/plane)  
+- Column space ≠ ℝⁿ  
+- Some b lie outside → no solution  
+
+**Example**
+
+A =
+[1  2  
+ 2  4]
+
+Column2 = 2 × column1 → dependent  
+Column space = line  
+
+Choose  
+b = [3, 7]ᵀ  
+
+Line requires y = 2x  
+But 7 ≠ 6 → outside column space  
+
+**Result:**  
+No solution exists
+
+---
+
+### 5. What does matrix–vector multiplication Ax mean?
+
+### Question  
+Give two interpretations.
+
+### Answer  
+
+### (1) Column interpretation
+
+If A = [a₁ a₂ … aₙ], then:
+
+Ax = x₁a₁ + x₂a₂ + ⋯ + xₙaₙ  
+
+→ Linear combination of columns  
+→ Core idea in linear algebra & ML  
+
+### (2) Row interpretation
+
+Each entry:
+
+(Ax)ᵢ = rowᵢ · x  
+
+→ Dot product with rows  
+→ Plugging into equations  
+
+**Why column view matters**
+- Explains span, rank, solvability  
+- Scales to high dimensions  
+- Foundation of ML models
+
+---
+
+### Interview Summary
+
+| Concept | Key Insight |
+|--------|-------------|
+| Ax = b | Linear combination problem |
+| Solvable for all b | Columns span ℝⁿ |
+| No solution | b outside column space |
+| Unique solution | Independent columns |
+| Ax meaning | Column combinations |
+
+---
+
 ## Summary
 
 This lecture introduced the **geometric intuition** behind linear systems:
