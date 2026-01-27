@@ -7,7 +7,7 @@
 
 1. [Objective](#1-objective)
 2. [Importance](#2-importance)
-3. [Concepts](#3-concepts-from-the-lecture)
+3. [Concepts](#3-concepts)
    - 3.1 [Systems of Linear Equations](#31-systems-of-linear-equations)
    - 3.2 [Matrix Form of Linear Equations](#32-matrix-form-of-linear-equations)
    - 3.3 [The Row Picture](#33-the-row-picture)
@@ -712,6 +712,20 @@ A = ┌─     ─┐
     └─     ─┘
 ⟹ C(A) = a 1D line, only some b solvable
 ```
+- If the columns are **independent**, they span the entire \( n \)-dimensional space ℝⁿ.
+  Then **yes**, for any \( b \), there is a solution.
+
+- If the columns are **dependent (singular)**, they lie on a flat surface  
+  (a **plane** or **line**) inside the larger space.
+
+- In this case, we can only solve for \( b \) **if \( b \) lies on that plane**.
+
+- If \( b \) sticks out of the plane, the system is **inconsistent**  
+  (no solution).
+
+### Geometry vs Algebra
+- **Algebra** hides the issue in errors like *“divide by zero”* or *“\( 0 = 1 \)”*.
+- **Geometry** shows the real reason: the vectors are *flat* and cannot reach the target.
 
 ---
 
@@ -799,6 +813,24 @@ In regression, we have n features (columns of the design matrix A) and m samples
 ## 8. Interview Summary
 
 What an interviewer expects you to know about Lecture 1:
+
+- **Matrix–Vector multiplication** is a *linear combination of columns*.
+- The difference between **\( n \) equations in \( n \) unknowns** vs. **\( m \) equations in \( n \) unknowns**.
+- **Geometric visualization of singular matrices**  
+  (e.g., planes collapsing to a line or a plane).
+- **Terminology**:
+  - Linear Combination  
+  - Span  
+  - Independence  
+  - Singular
+- The ability to **switch mentally** between:
+  - *Solving equations*  
+  - *Adding vectors*
+- The system **\( Ax = 0 \)** always has the **trivial solution** \( x = 0 \).
+- For a random vector **\( b \)**, a **singular matrix \( A \)** usually has **no solution**.
+
+> **Don’t just do the algebra — visualize the space.**
+
 
 1. **Matrix form Ax = b:** Understand the structure: A is the coefficient matrix, x is the unknown vector, b is the right-hand side. Be able to write a system of equations in matrix form and vice versa.
 
