@@ -568,7 +568,7 @@ Row 2 is 2 × row 1, so we need 2·1 = 3, which is false. **No solution.**
 
 ---
 
-## 6. Important Questions (With Correct Answers)
+## 6. Important Questions
 
 ### Question 1: What is the column space of a matrix?
 
