@@ -18,8 +18,8 @@
    - 3.8 [Singular vs. Non-Singular Matrices](#38-singular-vs-non-singular-matrices)
 4. [Maths](#4-maths)
    - 4.1 [Matrix-Vector Multiplication](#41-matrix-vector-multiplication-ax--b)
-   - 4.2 [The 2×2 Case](#42-the-2×2-case-row-and-column-pictures)
-   - 4.3 [The 3×3 Case](#43-the-3×3-case-structure-and-solvability)
+   - 4.2 [The 2×2 Case](#42-the-2×2-case)
+   - 4.3 [The 3×3 Case](#43-the-3×3-case)
    - 4.4 [When Solvability Fails](#44-when-does-solvability-fail)
    - 4.5 [Worked Example: 2×2 System](#45-worked-example-2×2-system)
 5. [Big Question](#5-big-question)
@@ -35,7 +35,7 @@
 7. [Top-5 Interview Questions](#7-top-5-interview-questions)
 8. [Interview Summary](#8-interview-summary)
 9. [Summary](#9-summary)
-10. [Additional Resources](#10-additional-resources)
+10. [Additional](#10-additional)
 ---
 
 ## 1. Objective
@@ -956,7 +956,7 @@ C(A) = {Ax : x ∈ ℝⁿ}
 
 ---
 
-## 10. Additional Resources
+## 10. Additional
 
 ### MIT OpenCourseWare (Official Course Materials)
 - **Full course:** http://ocw.mit.edu/18-06S05
