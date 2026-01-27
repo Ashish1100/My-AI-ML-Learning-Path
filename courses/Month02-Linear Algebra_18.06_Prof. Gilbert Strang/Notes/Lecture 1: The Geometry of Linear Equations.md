@@ -33,7 +33,7 @@
    - Q6 [Universal Solvability](#question-6-is-it-always-possible-to-solve-ax--b-for-every-right-hand-side-b)
    - Q7 [High-Dimensional Solvability](#question-7-in-high-dimensions-how-do-you-check-if-a-system-is-solvable-without-elimination)
    - Q8 [Non-Singular Matrices](#question-8-what-is-the-geometric-meaning-of-a-non-singular-matrix)
-7. [Top-5 Interview Questions](#7-top-5-interview-questions)
+7. [Top-Interview Questions](#7-top-interview-questions)
 8. [Interview Summary](#8-interview-summary)
 9. [Summary](#9-summary)
 10. [Additional](#10-additional)
@@ -833,7 +833,7 @@ Columns (2, 1) and (1, 3) are not proportional (linearly independent), so A is n
 
 ---
 
-## 7. Top-5 Interview Questions
+## 7. Top Interview Questions
 
 ### 1. Explain the column space of a matrix and why it matters for solvability.
 
