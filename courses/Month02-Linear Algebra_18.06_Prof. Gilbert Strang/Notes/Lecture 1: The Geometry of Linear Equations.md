@@ -345,7 +345,7 @@ Ax = [a₁ | a₂ | ⋯ | aₙ] · [x₁, x₂, …, xₙ]ᵀ
 
 ---
 
-### 4.2 The 2×2 Case: Row and Column Pictures
+### 4.2 The 2×2 Case
 
 **System:**
 ```
@@ -393,7 +393,7 @@ The solution x = 1, y = 2 tells us that b is in the span of {a₁, a₂}.
 
 ---
 
-### 4.3 The 3×3 Case: Structure and Solvability
+### 4.3 The 3×3 Case
 
 **System:**
 ```
