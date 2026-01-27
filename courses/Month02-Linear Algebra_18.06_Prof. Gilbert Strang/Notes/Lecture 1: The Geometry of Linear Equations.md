@@ -1031,7 +1031,7 @@ C(A) = {Ax : x ∈ ℝⁿ}
 
 ### MIT OpenCourseWare (Official Course Materials)
 - **Full course:** http://ocw.mit.edu/18-06S05
-- **Lecture 1 video:** https://www.youtube.com/watch?v=ZK3O402wf1c (39:49)
+- **Lecture 1 video:** https://www.youtube.com/watch?v=ZK3O402wf1c
 - **Course syllabus, problem sets, exams:** http://ocw.mit.edu/18-06S05
 
 ### Textbooks
